@@ -1,6 +1,6 @@
 const fetch = require('node-fetch');
 
-const current = async (city = 'patna') => {
+const current = async (city = 'patna',aqi) => {
     const key = 'e198c5da26ce404fa43182509222705';
     const url = 'https://api.weatherapi.com/v1/current.json?key=' + key + '&q=' + city + '&aqi=no';
     const response = await fetch(url);
@@ -12,7 +12,7 @@ const current = async (city = 'patna') => {
 
 
 
-const forecast = async (city='patna') => {
+const forecast = async (city='patna',aqi) => {
     const key = 'e198c5da26ce404fa43182509222705';
     const url = 'https://api.weatherapi.com/v1/forecast.json?key=' + key + '&q=' + city + '&days=1&aqi=no&alerts=no';
     console.log(url)

@@ -17,15 +17,16 @@ app.get('/form',(req,res)=>{
 app.post('/form',async (req,res)=>{
     const city=req.body.city;
     const weather=req.body.weather;
+    const aqi=req.body.aqi;
     console.log(weather);
     let friend='';
     if(weather=='forecast'){
         console.log("im working");
-        let data =await forecast(city);
+        let data =await forecast(city,aqi);
         friend= await forecastMapping( data);
     }
     else{
-        let data=await current(city);
+        let data=await current(city,aqi);
         //console.log(data.location)
         friend= await currentMapping(data);
     }

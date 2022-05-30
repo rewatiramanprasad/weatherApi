@@ -12,11 +12,17 @@ const currentMapping=async(current)=>{
 }
 
 const forecastMapping=async(forecast)=>{
-    console.log(forecast);
-    const mapper=forcast.forecast;
-    console.log(mapper);
+    console.log(forecast.forecast.forecastday[0].astro);
+    const mapper={}
+    mapper.Dawn=forecast.forecast.forecastday[0].astro.sunrise
+    mapper.Dusk=forecast.forecast.forecastday[0].astro.sunset
+    mapper["Moon lit"]=forecast.forecast.forecastday[0].astro.moonrise
+    mapper["Moon sleep"]=forecast.forecast.forecastday[0].astro.moonset
+    mapper.Orientation=forecast.forecast.forecastday[0].astro.moon_phase
+    mapper.Illumination=forecast.forecast.forecastday[0].astro.moon_illumination
+
     return mapper;
 }
-forecastMapping()
+
 
 module.exports={ currentMapping,forecastMapping}
